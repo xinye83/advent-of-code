@@ -1,3 +1,5 @@
+#--- Day 7: Handy Haversacks ---
+
 data = {}
 
 with open('input/day_07.in', 'r') as file:

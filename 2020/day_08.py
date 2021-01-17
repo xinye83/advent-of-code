@@ -1,3 +1,5 @@
+#--- Day 8: Handheld Halting ---
+
 data = []
 
 with open('input/day_08.in', 'r') as file:

@@ -1,3 +1,5 @@
+#--- Day 1: Report Repair ---
+
 data = []
 
 with open('input/day_01.in', 'r') as file:
@@ -6,7 +8,7 @@ with open('input/day_01.in', 'r') as file:
 
 sum = 2020
 
-# part 1
+#--- part 1 ---
 
 temp1 = []
 
@@ -17,7 +19,7 @@ for i in data:
 	else:
 		temp1.append(sum - i)
 
-# part 2
+#--- part 2 ---
 
 temp2 = data
 temp2.sort()

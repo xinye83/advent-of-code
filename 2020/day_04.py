@@ -1,3 +1,5 @@
+#--- Day 4: Passport Processing ---
+
 data = []
 
 with open('input/day_04.in', 'r') as file:

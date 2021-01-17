@@ -1,3 +1,5 @@
+#--- Day 3: Toboggan Trajectory ---
+
 data = []
 
 with open('input/day_03.in', 'r') as file:

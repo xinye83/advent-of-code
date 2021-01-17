@@ -1,3 +1,5 @@
+#--- Day 5: Binary Boarding ---
+
 data = []
 
 with open('input/day_05.in', 'r') as file:

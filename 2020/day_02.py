@@ -1,3 +1,5 @@
+#--- Day 2: Password Philosophy ---
+
 data = []
 
 with open('input/day_02.in', 'r') as file:
@@ -6,7 +8,7 @@ with open('input/day_02.in', 'r') as file:
 		data[len(data) - 1][0] = int(data[len(data) - 1][0])
 		data[len(data) - 1][1] = int(data[len(data) - 1][1])
 
-# part 1
+#--- part 1 ---
 
 count1 = 0
 
@@ -21,7 +23,7 @@ for low, high, key, password in data:
 
 print(count1)
 
-# part 2
+#--- part 2 ---
 
 count2 = 0
 

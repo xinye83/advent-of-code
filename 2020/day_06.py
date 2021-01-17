@@ -1,3 +1,5 @@
+#--- Day 6: Custom Customs ---
+
 data = []
 
 with open('input/day_06.in', 'r') as file:
