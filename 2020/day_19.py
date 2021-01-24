@@ -23,7 +23,6 @@ for item in temp:
 	i = item.find(':')
 	rules[int(item[:i].strip())] = Rule(item[i+1:].strip())
 
-
 def is_valid(message, start, key, rules):
 
 	if start >= len(message):
@@ -62,3 +61,14 @@ for message in messages:
 print(count)
 
 #--- part 2 ---
+
+rules[8].rule = [[42], [42, 8]]
+rules[11].rule = [[42, 31], [42, 11, 31]]
+
+count = 0
+for message in messages:
+	result = is_valid(message, 0, 0, rules)
+	if result[0] and result[1] == len(message):
+		count += 1
+
+print(count)
