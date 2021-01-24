@@ -16,15 +16,6 @@ class Rule:
 				else:
 					self.rule[i][j] = int(self.rule[i][j])
 
-		if len(self.rule) == 1 and len(self.rule[0]) == 1 and \
-			type(self.rule[0][0]) is not int:
-			self.length = 1
-		else:
-			self.length = 0
-
-	def __len__(self):
-		return self.length
-
 temp = temp.strip('\n').split('\n')
 
 rules = {}
@@ -32,60 +23,40 @@ for item in temp:
 	i = item.find(':')
 	rules[int(item[:i].strip())] = Rule(item[i+1:].strip())
 
+
+def is_valid(message, start, key, rules):
+
+	if start >= len(message):
+		return False, -1
+
+	if len(rules[key].rule) == 1 and len(rules[key].rule[0]) == 1 and \
+		rules[key].rule[0][0] in ['a', 'b']:
+		return message[start] == rules[key].rule[0][0], start + 1
+
+	for i in range(len(rules[key].rule)):
+
+		temp = True
+		start0 = start
+
+		for j in range(len(rules[key].rule[i])):
+			result = is_valid(message, start0, rules[key].rule[i][j], rules)
+			temp = temp and result[0]
+			start0 = result[1]
+
+			if not temp:
+				break
+
+		if temp:
+			return True, start0
+
+	return False, -1
+
 #--- part 1 ---
-
-import itertools
-
-def rule_length(key, rules):
-	if len(rules[key]) > 0:
-		# already calculated
-		return len(rules[key])
-	elif len(rules[key].rule[0]) == 1:
-		return rule_length(rules[key].rule[0][0], rules)
-	else:
-		return rule_length(rules[key].rule[0][0], rules) + rule_length(rules[key].rule[0][1], rules)
-
-def is_valid(message, key, rules):
-	if len(message) != len(rules[key]):
-		return False
-
-	if len(rules[key].rule) == 1:
-		if len(rules[key].rule[0]) == 1:
-			if type(rules[key].rule[0][0]) is not int:
-				return message[0] == rules[key].rule[0][0]
-			else:
-				return is_valid(message, rules[key].rule[0][0], rules)
-		else:
-			return is_valid(message[:len(rules[rules[key].rule[0][0]])], rules[key].rule[0][0], rules) and \
-				is_valid(message[len(rules[rules[key].rule[0][0]]):], rules[key].rule[0][1], rules)
-	else:
-		if len(rules[key].rule[0]) == 1:
-			if type(rules[key].rule[0][0]) is not int:
-				valid1 = message[0] == rules[key].rule[0][0]
-			else:
-				valid1 = is_valid(message, rules[key].rule[0][0], rules)
-		else:
-			valid1 = is_valid(message[:len(rules[rules[key].rule[0][0]])], rules[key].rule[0][0], rules) and \
-				is_valid(message[len(rules[rules[key].rule[0][0]]):], rules[key].rule[0][1], rules)
-
-		if len(rules[key].rule[1]) == 1:
-			if type(rules[key].rule[1][0]) is not int:
-				valid2 = message[0] == rules[key].rule[1][0]
-			else:
-				valid2 = is_valid(message, rules[key].rule[1][0], rules)
-		else:
-			valid2 = is_valid(message[:len(rules[rules[key].rule[1][0]])], rules[key].rule[1][0], rules) and \
-				is_valid(message[len(rules[rules[key].rule[1][0]]):], rules[key].rule[1][1], rules)
-
-		return valid1 or valid2
-
-# calulate the length of each rules
-for key in rules:
-	rules[key].length = rule_length(key, rules)
 
 count = 0
 for message in messages:
-	if is_valid(message, 0, rules):
+	result = is_valid(message, 0, 0, rules)
+	if result[0] and result[1] == len(message):
 		count += 1
 
 print(count)
