@@ -2,13 +2,14 @@
 
 data = open('input/day_20.in', 'r').read().strip('\n').split('\n\n')
 
-class Image():
+class Tile():
 
 	def __init__(self, grid, neighbor):
 		self.grid = grid
 		self.neighbor = neighbor
+		self.edge = [[], [], [], []]
 
-camera = {}
+tiles = {}
 
 for item in data:
 	j = item.find('\n')
@@ -16,39 +17,64 @@ for item in data:
 	id = int(item[5:j - 1])
 	image = item[j + 1:].split('\n')
 
-	camera[id] = Image(image, 0)
+	tiles[id] = Tile(image, 0)
 
 #--- part 1 ---
 
+# find matching edges
 edges = {}
 
-for id in camera:
+for id in tiles:
 
-	top = camera[id].grid[0]
-	bottom = camera[id].grid[-1]
+	top = tiles[id].grid[0]
+	bottom = tiles[id].grid[-1][::-1]
 
 	left = ''
 	right = ''
-	for line in camera[id].grid:
-		left += line[0]
+	for line in tiles[id].grid:
+		left = line[0] + left
 		right += line[-1]
 
-	for edge, side in zip([top, bottom, left, right], [0, 1, 2, 3]):
+	for edge, side in zip([top, right, bottom, left], [0, 1, 2, 3]):
 		if edge not in edges and edge[::-1] not in edges:
-			edges[edge] = [[id, side, 0]]
+			edges[edge] = [[id, side, True]]
 		elif edge in edges:
-			edges[edge].append([id, side, 0])
+			edges[edge].append([id, side, True])
 		else:
-			edges[edge[::-1]].append([id, side, 1]) # 1 ==> reverse
+			edges[edge[::-1]].append([id, side, False]) # False ==> reverse
 
 for edge in edges:
 	if len(edges[edge]) == 2:
-		camera[edges[edge][0][0]].neighbor += 1
-		camera[edges[edge][1][0]].neighbor += 1
+		tiles[edges[edge][0][0]].neighbor += 1
+		tiles[edges[edge][1][0]].neighbor += 1
 
 prod = 1
-for id in camera:
-	if camera[id].neighbor == 2:
+for id in tiles:
+	if tiles[id].neighbor == 2:
 		prod *= id
 
 print(prod)
+
+#--- part 2 ---
+
+for edge in edges:
+	if len(edges[edge]) == 2:
+		id0 = edges[edge][0][0]
+		side0 = edges[edge][0][1]
+		rev0 = edges[edge][0][2]
+
+		id1 = edges[edge][1][0]
+		side1 = edges[edge][1][1]
+		rev1 = edges[edge][1][2]
+
+		tiles[id0].edge[side0] = [id1, side1, rev0 == rev1]
+		tiles[id1].edge[side1] = [id0, side0, rev0 == rev1]
+
+for id in tiles:
+	if tiles[id].neighbor == 2:
+		break
+
+# place this tile at the top-left corner of the image
+# this tile has edge matches at bottom and left
+
+grid = [[]]
