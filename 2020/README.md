@@ -35,3 +35,6 @@ h1 {color:red;}
 p {color:blue;}
 </style>
 okay
+
+<style>p{color:red;}</style>
+*foo*
