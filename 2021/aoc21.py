@@ -13,4 +13,13 @@ def read_file(file_name, *types):
         print(f"** Error: input file f{file_name} doesn't exit.")
         exit(-1)
 
-    data = []
+    temp = [line.split() for line in file]
+    data = [list(column) for column in zip(*temp)]
+
+    for i, type in enumerate(types):
+        if type == "integer":
+            data[i] = list(map(int, data[i]))
+        elif type == "double":
+            data[i] = list(map(float, data[i]))
+
+    return data
