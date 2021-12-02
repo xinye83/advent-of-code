@@ -3,24 +3,15 @@
 import math
 import numpy
 
+
 class Tile:
     def __init__(self, data):
         data = data.splitlines()
         self.id = int(data[0][5:-1])
         self.content = numpy.array([list(line) for line in data[1:]])
-        self.borders = {
-            self.top,
-            self.bottom,
-            self.left,
-            self.right
-        }
+        self.borders = {self.top, self.bottom, self.left, self.right}
         self.rotate(2)
-        self.borders.update((
-            self.top,
-            self.bottom,
-            self.left,
-            self.right
-        ))
+        self.borders.update((self.top, self.bottom, self.left, self.right))
         self.shared_borders = set()
         self.neighbors = set()
         self.n_neighbors = 0
@@ -47,9 +38,10 @@ class Tile:
     def right(self):
         return "".join(self.content[:, -1])
 
+
 def part_1(tiles):
     for i, tile in enumerate(tiles[:-1]):
-        for other in tiles[i + 1:]:
+        for other in tiles[i + 1 :]:
             shared_borders = tile.borders & other.borders
             if shared_borders:
                 tile.neighbors.add(other)
@@ -62,6 +54,7 @@ def part_1(tiles):
         if tile.n_neighbors == 2:
             corner_product *= tile.id
     return corner_product
+
 
 def part_2(tiles):
     # Find a corner tile for the top left corner.
@@ -94,7 +87,7 @@ def part_2(tiles):
     for y in range(1, sidelength):
         row = []
         for x in range(sidelength):
-            tile = tile_map[y-1][x]
+            tile = tile_map[y - 1][x]
             for neighbor in tile.neighbors:
                 if tile.bottom in neighbor.shared_borders:
                     break
@@ -113,13 +106,17 @@ def part_2(tiles):
 
     for y, row in enumerate(tile_map):
         for x, tile in enumerate(row):
-            image[y*size:(y+1)*size, x*size:(x+1)*size] = tile.content[1:-1, 1:-1]
+            image[y * size : (y + 1) * size, x * size : (x + 1) * size] = tile.content[
+                1:-1, 1:-1
+            ]
 
-    monster = numpy.array((
-        list("                  # "),
-        list("#    ##    ##    ###"),
-        list(" #  #  #  #  #  #   ")
-    ))
+    monster = numpy.array(
+        (
+            list("                  # "),
+            list("#    ##    ##    ###"),
+            list(" #  #  #  #  #  #   "),
+        )
+    )
     monster_pos = {(x, y) for y, x in zip(*numpy.where(monster == "#"))}
     monster_width = len(monster[0])
     monster_height = len(monster)
@@ -130,7 +127,7 @@ def part_2(tiles):
         all_rough_water_pos = {(x, y) for y, x in zip(*numpy.where(image == "#"))}
         for y in range(image_size - monster_height):
             for x in range(image_size - monster_width):
-                cropped = image[y:y+monster_height, x:x+monster_width]
+                cropped = image[y : y + monster_height, x : x + monster_width]
                 rough_water_pos = set()
                 for cy, row in enumerate(cropped):
                     for cx, char in enumerate(row):
@@ -147,6 +144,7 @@ def part_2(tiles):
         if i == 4:
             image = numpy.flip(image, 1)
     return len(all_rough_water_pos)
+
 
 with open("input/day_20.in") as file:
     challenge_input = file.read().split("\n\n")

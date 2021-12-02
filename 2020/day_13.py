@@ -1,25 +1,24 @@
-#--- Day 13: Shuttle Search ---
+# --- Day 13: Shuttle Search ---
 
-data = open('input/day_13.in', 'r').read().strip('\n').split('\n')
+data = open("input/day_13.in", "r").read().strip("\n").split("\n")
 
-#--- part 1 ---
+# --- part 1 ---
 
 import math
 
 timestamp = int(data[0])
 
-buses = data[1].replace('x,', '').split(',')
+buses = data[1].replace("x,", "").split(",")
 buses = [int(bus) for bus in buses]
 
 minval = max(buses) ** 2
 
 for bus in buses:
-	minval = min((math.ceil(timestamp / bus) * bus - timestamp) * bus, \
-		minval)
+    minval = min((math.ceil(timestamp / bus) * bus - timestamp) * bus, minval)
 
 print(minval)
 
-#--- part 2 ---
+# --- part 2 ---
 
 """
 Chinese Remainder Theorem
@@ -44,6 +43,8 @@ Details:
 
 # https://rosettacode.org/wiki/Chinese_remainder_theorem#Python_3.6
 from functools import reduce
+
+
 def chinese_remainder(divisor, remainder):
     sum = 0
     prod = reduce(lambda remainder, b: remainder * b, divisor)
@@ -52,28 +53,32 @@ def chinese_remainder(divisor, remainder):
         sum += a_i * mul_inv(p, n_i) * p
     return sum % prod
 
+
 def mul_inv(a, b):
     b0 = b
     x0, x1 = 0, 1
-    if b == 1: return 1
+    if b == 1:
+        return 1
     while a > 1:
         q = a // b
-        a, b = b, a%b
+        a, b = b, a % b
         x0, x1 = x1 - q * x0, x0
-    if x1 < 0: x1 += b0
+    if x1 < 0:
+        x1 += b0
     return x1
+
 
 divisor = []
 remainder = []
 
-temp = data[1].split(',')
+temp = data[1].split(",")
 
 # for bus b at position p on the list, the timestamp t satisfies
 # 	t % b = -p % b
 
 for i in range(len(temp)):
-	if temp[i] != 'x':
-		divisor.append(int(temp[i]))
-		remainder.append(-i % int(temp[i]))
+    if temp[i] != "x":
+        divisor.append(int(temp[i]))
+        remainder.append(-i % int(temp[i]))
 
 print(chinese_remainder(divisor, remainder))

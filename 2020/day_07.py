@@ -1,33 +1,39 @@
-#--- Day 7: Handy Haversacks ---
+# --- Day 7: Handy Haversacks ---
 
 data = {}
 
-with open('input/day_07.in', 'r') as file:
-	for line in file:
-		i = line.find('contain')
+with open("input/day_07.in", "r") as file:
+    for line in file:
+        i = line.find("contain")
 
-		temp1 = line[:i].replace('bags', '').strip()
-		temp2 = line[i + len('contain'):].replace('bags', '').replace('bag', '').strip('.\n').split(',')
+        temp1 = line[:i].replace("bags", "").strip()
+        temp2 = (
+            line[i + len("contain") :]
+            .replace("bags", "")
+            .replace("bag", "")
+            .strip(".\n")
+            .split(",")
+        )
 
-		data[temp1] = {}
+        data[temp1] = {}
 
-		for item in temp2:
-			item = item.strip()
+        for item in temp2:
+            item = item.strip()
 
-			if item == 'no other':
-				break
+            if item == "no other":
+                break
 
-			j = item.find(' ')
+            j = item.find(" ")
 
-			data[temp1][item[j:].strip()] = int(item[:j])
+            data[temp1][item[j:].strip()] = int(item[:j])
 
 counter = 0
 
 for bag in data:
-	data[bag]['index'] = counter
-	counter += 1
+    data[bag]["index"] = counter
+    counter += 1
 
-#--- part 1 ---
+# --- part 1 ---
 
 from collections import deque
 
@@ -36,40 +42,42 @@ from collections import deque
 T = [[0 for i in range(len(data))] for j in range(len(data))]
 
 for i in data:
-	for j in data[i]:
-		if j != 'index':
-			T[data[i]['index']][data[j]['index']] = data[i][j]
+    for j in data[i]:
+        if j != "index":
+            T[data[i]["index"]][data[j]["index"]] = data[i][j]
 
 contain = [False] * len(data)
 
 q = deque()
-q.append(data['shiny gold']['index'])
+q.append(data["shiny gold"]["index"])
 
 while len(q) > 0:
-	i = q.popleft()
+    i = q.popleft()
 
-	if contain[i]:
-		continue
+    if contain[i]:
+        continue
 
-	contain[i] = True
+    contain[i] = True
 
-	for j in range(len(data)):
+    for j in range(len(data)):
 
-		if T[j][i] > 0:
-			q.append(j)
+        if T[j][i] > 0:
+            q.append(j)
 
 # the array contain will also mark 'shiny gold' as True
 print(sum(contain) - 1)
 
-#--- part 2 ---
+# --- part 2 ---
+
 
 def num_of_bags(bag):
-	count = 0
+    count = 0
 
-	for item in data[bag]:
-		if item != 'index':
-			count += data[bag][item] * (1 + num_of_bags(item))
+    for item in data[bag]:
+        if item != "index":
+            count += data[bag][item] * (1 + num_of_bags(item))
 
-	return count
+    return count
 
-print(num_of_bags('shiny gold'))
+
+print(num_of_bags("shiny gold"))
