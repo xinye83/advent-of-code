@@ -1,6 +1,6 @@
 from aoc21 import *
 
-data = read_file("input/day03.in", "string")
+data = read_table("input/day03.in", "string")
 codes = data[0]
 
 count = [0 for i in range(len(codes[0]))]

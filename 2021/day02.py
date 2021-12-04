@@ -1,6 +1,6 @@
 from aoc21 import *
 
-data = read_file("input/day02.in", "string", "integer")
+data = read_table("input/day02.in", "string", "integer")
 instruction = data[0]
 step_size = data[1]
 

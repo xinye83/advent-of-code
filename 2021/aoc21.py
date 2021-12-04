@@ -1,7 +1,9 @@
+import itertools
+
 __supported_types = ["integer", "double", "string"]
 
 
-def read_file(file_name, *types):
+def read_table(file_name, *types):
     for type in types:
         if type not in __supported_types:
             print(f"** Error: unsupported data type {type}.")
@@ -23,3 +25,14 @@ def read_file(file_name, *types):
             data[i] = list(map(float, data[i]))
 
     return data
+
+
+# read paragraphs separated by an empty line
+def read_paragraph(file_name):
+    try:
+        file = open(file_name, "r")
+    except:
+        print(f"** Error: input file f{file_name} doesn't exit.")
+        exit(-1)
+
+    return file.read().split("\n\n")

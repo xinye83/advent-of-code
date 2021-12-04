@@ -1,6 +1,6 @@
 from aoc21 import *
 
-data = read_file("input/day01.in", "integer")
+data = read_table("input/day01.in", "integer")
 depth = data[0]
 
 count = 0
