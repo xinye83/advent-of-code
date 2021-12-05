@@ -43,7 +43,6 @@ for vent in vents:
         for z in range(abs(vent[0] - vent[2]) + 1):
             overlap[vent[0] + x * z, vent[1] + y * z] += 1
 
-
 count = 0
 
 for key, value in overlap.items():
