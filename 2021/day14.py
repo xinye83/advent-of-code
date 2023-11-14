@@ -1,5 +1,3 @@
-from aoc21 import *
-
 data = open("input/day14.in", "r").read().strip("\n").split("\n\n")
 template = data[0]
 pairs = [line.split(" -> ") for line in data[1].split("\n")]
@@ -12,11 +10,11 @@ for _ in range(steps):
     index = 0
 
     while index < len(polymer):
-        if polymer[index : index + 2] in pairs:
+        if polymer[index: index + 2] in pairs:
             polymer = (
-                polymer[: index + 1]
-                + pairs[polymer[index : index + 2]]
-                + polymer[index + 1 :]
+                    polymer[: index + 1]
+                    + pairs[polymer[index: index + 2]]
+                    + polymer[index + 1:]
             )
             index += 1
 
@@ -75,8 +73,8 @@ def count_occurrence(pair, step):
 
 
 for i in range(len(polymer) - 1):
-    count_occurrence(polymer[i : i + 2], steps)
-    for key, value in database[polymer[i : i + 2]][steps].items():
+    count_occurrence(polymer[i: i + 2], steps)
+    for key, value in database[polymer[i: i + 2]][steps].items():
         if key not in count:
             count[key] = value
         else:

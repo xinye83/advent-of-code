@@ -1,5 +1,3 @@
-from aoc21 import *
-
 data = open("input/day08.in", "r").read().strip("\n").split("\n")
 
 count = 0
@@ -41,9 +39,9 @@ for line in data:
     # find "c", then "f"
     for c in code1[9]:
         if (
-            (c not in code1[6] and c in code1[0])
-            or (c not in code1[7] and c in code1[0])
-            or (c not in code1[8] and c in code1[0])
+                (c not in code1[6] and c in code1[0])
+                or (c not in code1[7] and c in code1[0])
+                or (c not in code1[8] and c in code1[0])
         ):
             mapping[c] = "c"
 

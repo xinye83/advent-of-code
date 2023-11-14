@@ -2,8 +2,8 @@
 
 data = open("input/day_17.in", "r").read().strip("\n").split("\n")
 
-import math
 import itertools
+import math
 
 
 class ConwayCube:
@@ -49,9 +49,9 @@ class ConwayCube:
                     break
 
             if (
-                not is_zero
-                and [ii[j] + coordinate[j] for j in range(self.dimension)]
-                in self.active
+                    not is_zero
+                    and [ii[j] + coordinate[j] for j in range(self.dimension)]
+                    in self.active
             ):
                 count += 1
 
@@ -81,7 +81,7 @@ class ConwayCube:
             count = self.__active_neighbors(coordinate2)
 
             if (coordinate2 in self.active and count in [2, 3]) or (
-                coordinate2 not in self.active and count == 3
+                    coordinate2 not in self.active and count == 3
             ):
                 next.append(coordinate2)
 

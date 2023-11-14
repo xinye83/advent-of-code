@@ -15,8 +15,8 @@ tiles = {}
 for item in data:
     j = item.find("\n")
 
-    id = int(item[5 : j - 1])
-    image = item[j + 1 :].split("\n")
+    id = int(item[5: j - 1])
+    image = item[j + 1:].split("\n")
 
     tiles[id] = Tile(image, 0)
 

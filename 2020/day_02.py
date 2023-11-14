@@ -29,7 +29,7 @@ count2 = 0
 
 for pos1, pos2, key, password in data:
     if (password[pos1 - 1] == key and password[pos2 - 1] != key) or (
-        password[pos1 - 1] != key and password[pos2 - 1] == key
+            password[pos1 - 1] != key and password[pos2 - 1] == key
     ):
         count2 += 1
 

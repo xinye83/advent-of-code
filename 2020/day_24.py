@@ -24,18 +24,18 @@ for tile in data:
         elif tile[i] == "w":
             cood[0] -= 1
             i += 1
-        elif tile[i : i + 2] == "ne":
+        elif tile[i: i + 2] == "ne":
             cood[0] += 1
             cood[1] += 1
             i += 2
-        elif tile[i : i + 2] == "sw":
+        elif tile[i: i + 2] == "sw":
             cood[0] -= 1
             cood[1] -= 1
             i += 2
-        elif tile[i : i + 2] == "nw":
+        elif tile[i: i + 2] == "nw":
             cood[1] += 1
             i += 2
-        elif tile[i : i + 2] == "se":
+        elif tile[i: i + 2] == "se":
             cood[1] -= 1
             i += 2
 
@@ -45,6 +45,7 @@ for tile in data:
         flipped.append(cood)
 
 print(len(flipped))
+
 
 # --- part 2 ---
 
@@ -70,7 +71,7 @@ def day(tiles, x1, x2, y1, y2):
                 n += 1
 
             if ([x, y] in tiles and (n == 1 or n == 2)) or (
-                [x, y] not in tiles and n == 2
+                    [x, y] not in tiles and n == 2
             ):
                 result.append([x, y])
                 x1 = min(x1, x)

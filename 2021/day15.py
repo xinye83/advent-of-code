@@ -57,7 +57,7 @@ while not visited[row - 1][col - 1]:
 
     visited[curr[0]][curr[1]] = True
 
-print(f"Part 1 - {distance[row-1][col-1]}")
+print(f"Part 1 - {distance[row - 1][col - 1]}")
 
 mult = 5
 
@@ -81,9 +81,9 @@ while not visited[mult * row - 1][mult * col - 1]:
 
     if curr[0] != 0 and not visited[curr[0] - 1][curr[1]]:
         temp = (
-            cavern[(curr[0] - 1) % row][curr[1] % col]
-            + math.floor((curr[0] - 1) / row)
-            + math.floor(curr[1] / col)
+                cavern[(curr[0] - 1) % row][curr[1] % col]
+                + math.floor((curr[0] - 1) / row)
+                + math.floor(curr[1] / col)
         )
         while temp > 9:
             temp -= 9
@@ -94,9 +94,9 @@ while not visited[mult * row - 1][mult * col - 1]:
 
     if curr[0] < mult * row - 1 and not visited[curr[0] + 1][curr[1]]:
         temp = (
-            cavern[(curr[0] + 1) % row][curr[1] % col]
-            + math.floor((curr[0] + 1) / row)
-            + math.floor(curr[1] / col)
+                cavern[(curr[0] + 1) % row][curr[1] % col]
+                + math.floor((curr[0] + 1) / row)
+                + math.floor(curr[1] / col)
         )
         while temp > 9:
             temp -= 9
@@ -107,9 +107,9 @@ while not visited[mult * row - 1][mult * col - 1]:
 
     if curr[1] != 0 and not visited[curr[0]][curr[1] - 1]:
         temp = (
-            cavern[curr[0] % row][(curr[1] - 1) % col]
-            + math.floor(curr[0] / row)
-            + math.floor((curr[1] - 1) / col)
+                cavern[curr[0] % row][(curr[1] - 1) % col]
+                + math.floor(curr[0] / row)
+                + math.floor((curr[1] - 1) / col)
         )
         while temp > 9:
             temp -= 9
@@ -120,9 +120,9 @@ while not visited[mult * row - 1][mult * col - 1]:
 
     if curr[1] < mult * col - 1 and not visited[curr[0]][curr[1] + 1]:
         temp = (
-            cavern[curr[0] % row][(curr[1] + 1) % col]
-            + math.floor(curr[0] / row)
-            + math.floor((curr[1] + 1) / col)
+                cavern[curr[0] % row][(curr[1] + 1) % col]
+                + math.floor(curr[0] / row)
+                + math.floor((curr[1] + 1) / col)
         )
         while temp > 9:
             temp -= 9
@@ -133,4 +133,4 @@ while not visited[mult * row - 1][mult * col - 1]:
 
     visited[curr[0]][curr[1]] = True
 
-print(f"Part 2 - {distance[mult * row-1][mult * col-1]}")
+print(f"Part 2 - {distance[mult * row - 1][mult * col - 1]}")

@@ -1,5 +1,6 @@
-from aoc21 import *
 import statistics
+
+from aoc21 import *
 
 data = read_table("input/day07.in", "string")
 

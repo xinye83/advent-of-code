@@ -22,18 +22,17 @@ temp = temp.strip("\n").split("\n")
 rules = {}
 for item in temp:
     i = item.find(":")
-    rules[int(item[:i].strip())] = Rule(item[i + 1 :].strip())
+    rules[int(item[:i].strip())] = Rule(item[i + 1:].strip())
 
 
 def is_valid(message, start, key, rules):
-
     if start >= len(message):
         return False, -1
 
     if (
-        len(rules[key].rule) == 1
-        and len(rules[key].rule[0]) == 1
-        and rules[key].rule[0][0] in ["a", "b"]
+            len(rules[key].rule) == 1
+            and len(rules[key].rule[0]) == 1
+            and rules[key].rule[0][0] in ["a", "b"]
     ):
         return message[start] == rules[key].rule[0][0], start + 1
 

@@ -42,36 +42,36 @@ while len(stack) > 0:
             b = 'a'
         if b == 'E':
             b = 'z'
-        if letter.index(b) <= cur + 1 and (step[i-1][j] == -1 or step[i-1][j] > step[i][j] + 1):
-            step[i-1][j] = step[i][j] + 1
-            stack.append([i-1, j])
+        if letter.index(b) <= cur + 1 and (step[i - 1][j] == -1 or step[i - 1][j] > step[i][j] + 1):
+            step[i - 1][j] = step[i][j] + 1
+            stack.append([i - 1, j])
     if i + 1 < row:
         b = grid[i + 1][j]
         if b == 'S':
             b = 'a'
         if b == 'E':
             b = 'z'
-        if letter.index(b) <= cur + 1 and (step[i+1][j] == -1 or step[i+1][j] > step[i][j] + 1):
-            step[i+1][j] = step[i][j] + 1
-            stack.append([i+1, j])
+        if letter.index(b) <= cur + 1 and (step[i + 1][j] == -1 or step[i + 1][j] > step[i][j] + 1):
+            step[i + 1][j] = step[i][j] + 1
+            stack.append([i + 1, j])
     if j - 1 >= 0:
-        b = grid[i][j-1]
+        b = grid[i][j - 1]
         if b == 'S':
             b = 'a'
         if b == 'E':
             b = 'z'
-        if letter.index(b) <= cur + 1 and (step[i][j-1] == -1 or step[i][j-1] > step[i][j] + 1):
-            step[i][j-1] = step[i][j] + 1
-            stack.append([i, j-1])
+        if letter.index(b) <= cur + 1 and (step[i][j - 1] == -1 or step[i][j - 1] > step[i][j] + 1):
+            step[i][j - 1] = step[i][j] + 1
+            stack.append([i, j - 1])
     if j + 1 < col:
-        b = grid[i][j+1]
+        b = grid[i][j + 1]
         if b == 'S':
             b = 'a'
         if b == 'E':
             b = 'z'
-        if letter.index(b) <= cur + 1 and (step[i][j+1] == -1 or step[i][j+1] > step[i][j] + 1):
-            step[i][j+1] = step[i][j] + 1
-            stack.append([i, j+1])
+        if letter.index(b) <= cur + 1 and (step[i][j + 1] == -1 or step[i][j + 1] > step[i][j] + 1):
+            step[i][j + 1] = step[i][j] + 1
+            stack.append([i, j + 1])
 
 print(step[i][j])
 
@@ -114,35 +114,35 @@ while len(stack) > 0:
             b = 'a'
         if b == 'E':
             b = 'z'
-        if letter.index(b) >= cur - 1 and (step[i-1][j] == -1 or step[i-1][j] > step[i][j] + 1):
-            step[i-1][j] = step[i][j] + 1
-            stack.append([i-1, j])
+        if letter.index(b) >= cur - 1 and (step[i - 1][j] == -1 or step[i - 1][j] > step[i][j] + 1):
+            step[i - 1][j] = step[i][j] + 1
+            stack.append([i - 1, j])
     if i + 1 < row:
         b = grid[i + 1][j]
         if b == 'S':
             b = 'a'
         if b == 'E':
             b = 'z'
-        if letter.index(b) >= cur - 1 and (step[i+1][j] == -1 or step[i+1][j] > step[i][j] + 1):
-            step[i+1][j] = step[i][j] + 1
-            stack.append([i+1, j])
+        if letter.index(b) >= cur - 1 and (step[i + 1][j] == -1 or step[i + 1][j] > step[i][j] + 1):
+            step[i + 1][j] = step[i][j] + 1
+            stack.append([i + 1, j])
     if j - 1 >= 0:
-        b = grid[i][j-1]
+        b = grid[i][j - 1]
         if b == 'S':
             b = 'a'
         if b == 'E':
             b = 'z'
-        if letter.index(b) >= cur - 1 and (step[i][j-1] == -1 or step[i][j-1] > step[i][j] + 1):
-            step[i][j-1] = step[i][j] + 1
-            stack.append([i, j-1])
+        if letter.index(b) >= cur - 1 and (step[i][j - 1] == -1 or step[i][j - 1] > step[i][j] + 1):
+            step[i][j - 1] = step[i][j] + 1
+            stack.append([i, j - 1])
     if j + 1 < col:
-        b = grid[i][j+1]
+        b = grid[i][j + 1]
         if b == 'S':
             b = 'a'
         if b == 'E':
             b = 'z'
-        if letter.index(b) >= cur - 1 and (step[i][j+1] == -1 or step[i][j+1] > step[i][j] + 1):
-            step[i][j+1] = step[i][j] + 1
-            stack.append([i, j+1])
+        if letter.index(b) >= cur - 1 and (step[i][j + 1] == -1 or step[i][j + 1] > step[i][j] + 1):
+            step[i][j + 1] = step[i][j] + 1
+            stack.append([i, j + 1])
 
 print(step[i][j])

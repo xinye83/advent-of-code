@@ -39,11 +39,11 @@ for line in data:
 
 print(abs(x) + abs(y))
 
+
 # --- part 2 ---
 
 
 def rotate_way_point(instr, num, x_way, y_way):
-
     num %= 360
 
     if num == 0:

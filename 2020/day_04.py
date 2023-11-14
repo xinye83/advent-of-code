@@ -14,7 +14,7 @@ with open("input/day_04.in", "r") as file:
         for item in temp2:
             i = item.find(":")
 
-            temp3[item[:i]] = item[i + 1 :]
+            temp3[item[:i]] = item[i + 1:]
 
         data.append(temp3)
 
@@ -46,27 +46,27 @@ for passport in data:
     # check 'byr'
 
     if (
-        not "byr" in passport
-        or not len(passport["byr"]) == 4
-        or not ((int(passport["byr"]) >= 1920 and int(passport["byr"]) <= 2002))
+            not "byr" in passport
+            or not len(passport["byr"]) == 4
+            or not ((int(passport["byr"]) >= 1920 and int(passport["byr"]) <= 2002))
     ):
         continue
 
     # check 'iyr'
 
     if (
-        not "iyr" in passport
-        or not len(passport["iyr"]) == 4
-        or not ((int(passport["iyr"]) >= 2010 and int(passport["iyr"]) <= 2020))
+            not "iyr" in passport
+            or not len(passport["iyr"]) == 4
+            or not ((int(passport["iyr"]) >= 2010 and int(passport["iyr"]) <= 2020))
     ):
         continue
 
     # check 'eyr'
 
     if (
-        not "eyr" in passport
-        or not len(passport["eyr"]) == 4
-        or not ((int(passport["eyr"]) >= 2020 and int(passport["eyr"]) <= 2030))
+            not "eyr" in passport
+            or not len(passport["eyr"]) == 4
+            or not ((int(passport["eyr"]) >= 2020 and int(passport["eyr"]) <= 2030))
     ):
         continue
 
@@ -79,21 +79,21 @@ for passport in data:
         continue
 
     if passport["hgt"][-2:] == "cm" and not (
-        int(passport["hgt"][:-2]) >= 150 and int(passport["hgt"][:-2]) <= 193
+            int(passport["hgt"][:-2]) >= 150 and int(passport["hgt"][:-2]) <= 193
     ):
         continue
 
     if passport["hgt"][-2:] == "in" and not (
-        int(passport["hgt"][:-2]) >= 59 and int(passport["hgt"][:-2]) <= 76
+            int(passport["hgt"][:-2]) >= 59 and int(passport["hgt"][:-2]) <= 76
     ):
         continue
 
     # check 'hcl'
 
     if (
-        not "hcl" in passport
-        or not len(passport["hcl"]) == 7
-        or not passport["hcl"][0] == "#"
+            not "hcl" in passport
+            or not len(passport["hcl"]) == 7
+            or not passport["hcl"][0] == "#"
     ):
         continue
 

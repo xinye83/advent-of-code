@@ -1,5 +1,3 @@
-import itertools
-
 __supported_types = ["integer", "double", "string"]
 
 

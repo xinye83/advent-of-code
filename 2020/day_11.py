@@ -11,7 +11,6 @@ import copy
 
 
 def occupied_neighbor(map, i, j):
-
     count = 0
 
     for ii in [-1, 0, 1]:
@@ -69,11 +68,11 @@ for i in range(len(current)):
 
 print(occupied)
 
+
 # --- part 2 ---
 
 
 def occupied_in_sight(map, i, j):
-
     count = 0
 
     for ii in [-1, 0, 1]:

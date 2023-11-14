@@ -2,6 +2,7 @@
 
 input = 364289715
 
+
 # --- part 1 ---
 
 
@@ -23,7 +24,7 @@ def move(labels, steps):
 
     index = labels.index(destination)
 
-    labels = labels[1 : index + 1] + pickup + labels[index + 1 :] + [current]
+    labels = labels[1: index + 1] + pickup + labels[index + 1:] + [current]
 
     return labels
 
@@ -33,7 +34,8 @@ labels = move(labels, 100)
 
 i = labels.index(1)
 
-print("".join([str(n) for n in labels[i + 1 :] + labels[:i]]))
+print("".join([str(n) for n in labels[i + 1:] + labels[:i]]))
+
 
 # --- part 2 ---
 

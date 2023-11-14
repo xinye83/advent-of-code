@@ -1,5 +1,6 @@
-from aoc21 import *
 from collections import defaultdict
+
+from aoc21 import *
 
 data = read_table("input/day05.in", "string", "string", "string")
 vents = [
