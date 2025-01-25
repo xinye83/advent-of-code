@@ -2,9 +2,7 @@ from pathlib import Path
 
 data = Path(__file__.replace(".py", ".in")).read_text().strip("\n").split("\n\n")
 
-# --- part 1 ---
-
-
+# pages in rules[m] must be printed after page m
 rules = {}
 
 for line in data[0].split("\n"):
@@ -12,10 +10,13 @@ for line in data[0].split("\n"):
     m = int(m)
     n = int(n)
     if m not in rules:
-        rules[m] = [n]
+        rules[m] = set()
+        rules[m].add(n)
     else:
-        rules[m].append(n)
+        rules[m].add(n)
 
+
+# --- part 1 ---
 
 middle_page = 0
 unorderred = []
@@ -43,3 +44,23 @@ for line in data[1].split("\n"):
 print(middle_page)
 
 # --- part 2 ---
+
+middle_page_2 = 0
+
+for line in unorderred:
+    index = [0 for _ in line]
+
+    for i in range(len(line) - 1):
+        for j in range(i + 1, len(line)):
+            if line[j] in rules[line[i]]:
+                index[j] += 1
+            else:
+                index[i] += 1
+
+    for i in range(len(line)):
+        if index[i] == int(len(line) / 2):
+            middle_page_2 += line[i]
+            continue
+
+
+print(middle_page_2)
