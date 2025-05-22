@@ -8,7 +8,7 @@ for line in data:
     i = line.find("(")
 
     ingredients = line[:i].strip().split(" ")
-    allergens = line[i + 1 + len("contains") : -1].strip().split(", ")
+    allergens = line[i + 1 + len("contains"): -1].strip().split(", ")
 
     foods.append([ingredients, allergens])
 

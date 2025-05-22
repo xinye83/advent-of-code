@@ -1,6 +1,7 @@
 # https://github.com/BastiHz/Advent_of_Code
 
 import math
+
 import numpy
 
 
@@ -41,7 +42,7 @@ class Tile:
 
 def part_1(tiles):
     for i, tile in enumerate(tiles[:-1]):
-        for other in tiles[i + 1 :]:
+        for other in tiles[i + 1:]:
             shared_borders = tile.borders & other.borders
             if shared_borders:
                 tile.neighbors.add(other)
@@ -106,9 +107,9 @@ def part_2(tiles):
 
     for y, row in enumerate(tile_map):
         for x, tile in enumerate(row):
-            image[y * size : (y + 1) * size, x * size : (x + 1) * size] = tile.content[
-                1:-1, 1:-1
-            ]
+            image[y * size: (y + 1) * size, x * size: (x + 1) * size] = tile.content[
+                                                                        1:-1, 1:-1
+                                                                        ]
 
     monster = numpy.array(
         (
@@ -127,7 +128,7 @@ def part_2(tiles):
         all_rough_water_pos = {(x, y) for y, x in zip(*numpy.where(image == "#"))}
         for y in range(image_size - monster_height):
             for x in range(image_size - monster_width):
-                cropped = image[y : y + monster_height, x : x + monster_width]
+                cropped = image[y: y + monster_height, x: x + monster_width]
                 rough_water_pos = set()
                 for cy, row in enumerate(cropped):
                     for cx, char in enumerate(row):

@@ -1,5 +1,3 @@
-from aoc21 import *
-
 chunks = open("input/day10.in", "r").read().strip("\n").split("\n")
 incomplete = []
 
@@ -21,10 +19,10 @@ for chunk in chunks:
             temp[3].append(i)
         elif c == ")":
             if (
-                len(temp[0]) == 0
-                or (len(temp[1]) != 0 and temp[0][-1] < temp[1][-1])
-                or (len(temp[2]) != 0 and temp[0][-1] < temp[2][-1])
-                or (len(temp[3]) != 0 and temp[0][-1] < temp[3][-1])
+                    len(temp[0]) == 0
+                    or (len(temp[1]) != 0 and temp[0][-1] < temp[1][-1])
+                    or (len(temp[2]) != 0 and temp[0][-1] < temp[2][-1])
+                    or (len(temp[3]) != 0 and temp[0][-1] < temp[3][-1])
             ):
                 illegal[0] += 1
                 skip = True
@@ -33,10 +31,10 @@ for chunk in chunks:
             del temp[0][-1]
         elif c == "]":
             if (
-                len(temp[1]) == 0
-                or (len(temp[0]) != 0 and temp[1][-1] < temp[0][-1])
-                or (len(temp[2]) != 0 and temp[1][-1] < temp[2][-1])
-                or (len(temp[3]) != 0 and temp[1][-1] < temp[3][-1])
+                    len(temp[1]) == 0
+                    or (len(temp[0]) != 0 and temp[1][-1] < temp[0][-1])
+                    or (len(temp[2]) != 0 and temp[1][-1] < temp[2][-1])
+                    or (len(temp[3]) != 0 and temp[1][-1] < temp[3][-1])
             ):
                 illegal[1] += 1
                 skip = True
@@ -45,10 +43,10 @@ for chunk in chunks:
             del temp[1][-1]
         elif c == "}":
             if (
-                len(temp[2]) == 0
-                or (len(temp[0]) != 0 and temp[2][-1] < temp[0][-1])
-                or (len(temp[1]) != 0 and temp[2][-1] < temp[1][-1])
-                or (len(temp[3]) != 0 and temp[2][-1] < temp[3][-1])
+                    len(temp[2]) == 0
+                    or (len(temp[0]) != 0 and temp[2][-1] < temp[0][-1])
+                    or (len(temp[1]) != 0 and temp[2][-1] < temp[1][-1])
+                    or (len(temp[3]) != 0 and temp[2][-1] < temp[3][-1])
             ):
                 illegal[2] += 1
                 skip = True
@@ -57,10 +55,10 @@ for chunk in chunks:
             del temp[2][-1]
         elif c == ">":
             if (
-                len(temp[3]) == 0
-                or (len(temp[0]) != 0 and temp[3][-1] < temp[0][-1])
-                or (len(temp[1]) != 0 and temp[3][-1] < temp[1][-1])
-                or (len(temp[2]) != 0 and temp[3][-1] < temp[2][-1])
+                    len(temp[3]) == 0
+                    or (len(temp[0]) != 0 and temp[3][-1] < temp[0][-1])
+                    or (len(temp[1]) != 0 and temp[3][-1] < temp[1][-1])
+                    or (len(temp[2]) != 0 and temp[3][-1] < temp[2][-1])
             ):
                 illegal[3] += 1
                 skip = True

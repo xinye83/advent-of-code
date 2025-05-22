@@ -9,7 +9,6 @@ mask_length = 36
 
 
 def masked_value(mask, value):
-
     temp = bin(value)[2:]
     temp = "0" * (mask_length - len(temp)) + temp
     temp = list(temp)
@@ -31,7 +30,7 @@ for line in data:
         i = line.find("]")
 
         address = int(line[4:i])
-        value = int(line[i + 4 :])
+        value = int(line[i + 4:])
 
         mem[address] = masked_value(mask, value)
 
@@ -42,11 +41,11 @@ for address in mem:
 
 print(sum)
 
+
 # --- part 2 ---
 
 
 def masked_address(mask, address):
-
     temp = bin(address)[2:]
     temp = "0" * (mask_length - len(temp)) + temp
 
@@ -78,7 +77,7 @@ for line in data:
         i = line.find("]")
 
         address = int(line[4:i])
-        value = int(line[i + 4 :])
+        value = int(line[i + 4:])
 
         for j in masked_address(mask, address):
             mem[int(j, 2)] = value

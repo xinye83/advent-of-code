@@ -1,5 +1,3 @@
-from aoc21 import *
-
 data = open("input/day13.in", "r").read().strip("\n").split("\n\n")
 dots = [list(map(int, dot.split(","))) for dot in data[0].split("\n")]
 

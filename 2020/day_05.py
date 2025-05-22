@@ -8,7 +8,6 @@ with open("input/day_05.in", "r") as file:
 
 
 def seatID(seat):
-
     row = int(seat[:7].replace("F", "0").replace("B", "1"), 2)
     col = int(seat[7:].replace("R", "1").replace("L", "0"), 2)
 

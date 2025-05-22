@@ -2,22 +2,21 @@
 
 data = open("input/day_16.in", "r").read()
 
+
 # --- part 1 ---
 
 
 def string_to_interval(string):
-
     i = string.find("-")
-    return [int(string[:i]), int(string[i + 1 :])]
+    return [int(string[:i]), int(string[i + 1:])]
 
 
 def is_valid_number(number, valid_ranges):
-
     valid = False
 
     for field in valid_ranges:
         if (number >= valid_ranges[field][0] and number <= valid_ranges[field][1]) or (
-            number >= valid_ranges[field][2] and number <= valid_ranges[field][3]
+                number >= valid_ranges[field][2] and number <= valid_ranges[field][3]
         ):
             valid = True
 
@@ -29,22 +28,21 @@ def is_valid_number(number, valid_ranges):
 valid_ranges = {}
 
 for line in data[: data.find("\n\n")].split("\n"):
-
     i = line.find(":")
     j = line.find(" or ")
 
     valid_ranges[line[:i].strip()] = string_to_interval(
-        line[i + 1 : j].strip()
-    ) + string_to_interval(line[j + 4 :].strip())
+        line[i + 1: j].strip()
+    ) + string_to_interval(line[j + 4:].strip())
 
 # parse nearby tickets
 
 sum = 0
 
 for ticket in (
-    data[data.find("nearby tickets:\n") + len("nearby tickets:\n") :]
-    .strip("\n")
-    .split("\n")
+        data[data.find("nearby tickets:\n") + len("nearby tickets:\n"):]
+                .strip("\n")
+                .split("\n")
 ):
     for num in ticket.split(","):
         if not is_valid_number(int(num), valid_ranges):
@@ -52,11 +50,11 @@ for ticket in (
 
 print(sum)
 
+
 # --- part 2 ---
 
 
 def is_valid_ticket(ticket, valid_ranges):
-
     valid = True
 
     for number in ticket:
@@ -68,7 +66,7 @@ def is_valid_ticket(ticket, valid_ranges):
 
 
 valid_tickets = (
-    data[data.find("your ticket:\n") + len("your ticket:\n") :]
+    data[data.find("your ticket:\n") + len("your ticket:\n"):]
     .replace("\nnearby tickets:\n", "")
     .strip("\n")
     .split("\n")
@@ -98,9 +96,9 @@ for i in range(len(valid_tickets[0])):
             number = valid_tickets[j][i]
 
             if not (
-                number >= valid_ranges[field][0] and number <= valid_ranges[field][1]
+                    number >= valid_ranges[field][0] and number <= valid_ranges[field][1]
             ) and not (
-                number >= valid_ranges[field][2] and number <= valid_ranges[field][3]
+                    number >= valid_ranges[field][2] and number <= valid_ranges[field][3]
             ):
                 valid = False
                 break

@@ -46,12 +46,12 @@ score += (count + 1) * sum
 
 print(score)
 
+
 # --- part 2 ---
 
 # deck1 and deck2 are lists of cards in the each
 # decks with the top card on the left of the list
 def recursive_combat(deck1, deck2):
-
     history = []
 
     while len(deck1) > 0 and len(deck2) > 0:

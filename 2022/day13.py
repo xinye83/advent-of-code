@@ -83,7 +83,7 @@ print(sum_index)
 
 # part 2
 
-packets = (Path(__file__).parent / 'input' / 'day13.in').read_text().strip('\n').replace('\n\n','\n').split('\n')
+packets = (Path(__file__).parent / 'input' / 'day13.in').read_text().strip('\n').replace('\n\n', '\n').split('\n')
 packets = [process_packet(line, 0, len(line)) for line in packets]
 packets.append([[2]])
 packets.append([[6]])

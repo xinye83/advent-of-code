@@ -1,5 +1,3 @@
-from aoc21 import *
-
 data = open("input/day12.in", "r").read().strip("\n").split("\n")
 paths = [line.split("-") for line in data]
 
@@ -69,6 +67,5 @@ while len(stack) > 0:
                 stack.append([next] + path[1:] + [next])
         else:
             stack.append(path + [next])
-
 
 print(f"Part 2 - {total}")

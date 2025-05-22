@@ -1,5 +1,3 @@
-from aoc21 import *
-
 data = open("input/day09.in", "r").read().strip("\n").split("\n")
 heightmap = [list(map(int, list(line))) for line in data]
 

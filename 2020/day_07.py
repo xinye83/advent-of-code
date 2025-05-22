@@ -8,7 +8,7 @@ with open("input/day_07.in", "r") as file:
 
         temp1 = line[:i].replace("bags", "").strip()
         temp2 = (
-            line[i + len("contain") :]
+            line[i + len("contain"):]
             .replace("bags", "")
             .replace("bag", "")
             .strip(".\n")
@@ -66,6 +66,7 @@ while len(q) > 0:
 
 # the array contain will also mark 'shiny gold' as True
 print(sum(contain) - 1)
+
 
 # --- part 2 ---
 

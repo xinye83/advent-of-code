@@ -16,7 +16,7 @@ def process_data(data: list[str]):
         lines = monkey.split('\n')
 
         stack.append([int(item) for item in lines[1].split(': ')[1].split(', ')])
-        operation.append(lines[2].split('=')[1].replace(' ',''))
+        operation.append(lines[2].split('=')[1].replace(' ', ''))
         div.append(int(lines[3].split('by')[1]))
         t.append(int(lines[4].split('monkey')[1]))
         f.append(int(lines[5].split('monkey')[1]))

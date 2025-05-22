@@ -2,6 +2,7 @@
 
 data = open("input/day_18.in", "r").read().strip("\n").split("\n")
 
+
 # --- part 1 ---
 
 # solution from geohotz
@@ -20,7 +21,6 @@ class Number1:
 
 
 def evaluate1(string):
-
     s = ""
     is_number = False
 
@@ -47,6 +47,7 @@ for line in data:
 
 print(sum)
 
+
 # --- part 2 ---
 
 
@@ -62,7 +63,6 @@ class Number2:
 
 
 def evaluate2(string):
-
     s = ""
     is_number = False
 

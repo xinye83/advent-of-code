@@ -2,11 +2,11 @@
 
 data = [0, 13, 1, 16, 6, 17]
 
+
 # --- part 1 ---
 
 
 def my_num(last_spoken, last_num, start_turn, my_turn):
-
     for turn in range(start_turn, my_turn + 1):
 
         if last_spoken[last_num][0] == -1:
