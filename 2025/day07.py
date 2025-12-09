@@ -1,5 +1,4 @@
 from pathlib import Path
-import re
 
 data = Path(__file__.replace(".py", ".in")).read_text().strip("\n").split("\n")
 
